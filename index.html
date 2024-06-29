@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Experience Maturity Assessment</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+</head>
+<body>
+<div class="corner-images left">
+    <img src="Icons/Anh%202.png" alt="Left Corner Image">
+    <div class="zalo-rating">
+        <img src="Icons/zalo.png" alt="Zalo App" class="zalo-icon">
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+</div>
+</div>
+<div class="corner-images right">
+    <img src="Icons/Anh%201.png" alt="Right Corner Image">
+</div>
+
+
+
+
+<div class="container-thumnails">
+    <div class="thumbnails" id="step1">
+        <h1>LẮNG NGHE KHÁCH HÀNG</h1>
+        <div class="circle-result">1</div>
+        <div class="text">SƠ KHAI</div>
+        <div class="level">Cấp Độ 1/5</div>
+        <div class="description">Đánh giá mức độ trưởng thành về quản trị trải nghiệm khách hàng</div>
+    </div>
+
+    <div class="thumbnails" id="step2">
+        <h1>LẮNG NGHE KHÁCH HÀNG</h1>
+        <div class="circle-result">2</div>
+        <div class="text">Thành lập</div>
+        <div class="level">Cấp Độ 2/5</div>
+        <div class="description">Đánh giá mức độ trưởng thành về quản trị trải nghiệm khách hàng</div>
+    </div>
+
+    <div class="thumbnails" id="step3">
+        <h1>LẮNG NGHE KHÁCH HÀNG</h1>
+        <div class="circle-result">3</div>
+        <div class="text">Vận hành</div>
+        <div class="level">Cấp Độ 3/5</div>
+        <div class="description">Đánh giá mức độ trưởng thành về quản trị trải nghiệm khách hàng</div>
+    </div>
+
+    <div class="thumbnails" id="step4">
+        <h1>LẮNG NGHE KHÁCH HÀNG</h1>
+        <div class="circle-result">4</div>
+        <div class="text">Tối ưu</div>
+        <div class="level">Cấp Độ 4/5</div>
+        <div class="description">Đánh giá mức độ trưởng thành về quản trị trải nghiệm khách hàng</div>
+    </div>
+
+    <div class="thumbnails" id="step5">
+        <h1>LẮNG NGHE KHÁCH HÀNG</h1>
+        <div class="circle-result">5</div>
+        <div class="text">Thấm nhuần</div>
+        <div class="level">Cấp Độ 5/5</div>
+        <div class="description">Đánh giá mức độ trưởng thành về quản trị trải nghiệm khách hàng</div>
+    </div>
+</div>
+
+<button id="scrollDownButton" onclick="scrollToBottom()">
+    Kéo xuống
+    <i class="fas fa-chevron-down"></i>
+</button>
+
+<h1 class="title">Đánh giá mức độ trưởng thành về quản trị trải nghiệm khách hàng</h1>
+<div class="container">
+
+    <form id="assessmentForm">
+        <p class="main-paragraph">Công ty bạn trưởng thành như thế nào trong việc lắng nghe khách hàng?</p>
+        <p class="bonus-paragraph">Đánh giá khả năng của bạn trong việc lắng nghe, hiểu và đáp ứng các tín hiệu từ khách hàng.</p>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="button" id="startButton">
+            Start
+            <i class="fas fa-rocket"></i>
+        </button>
+    </form>
+
+    <div id="introduction" class="hidden">
+        <h1>HƯỚNG DẪN TRẢ LỜI</h1>
+        <h2>Hãy dựa vào hướng dẫn sau đây để trả lời các câu hỏi:</h2>
+        <p>• Chọn "Có": nếu câu đó phản ánh hiện trạng đang có và được thực hiện một cách nhất quán (ít nhất 80% thời gian).</p>
+        <p>• Chọn "Không có": nếu hoàn toàn chưa từng thực hiện.</p>
+        <p>• Chọn "Không rõ vấn đề này": nếu không chắc chắn đã thực hiện hay chưa.</p>
+        <button type="button" id="beginTestButton">Bắt đầu làm bài</button>
+    </div>
+
+    <div id="questionContainer" class="hidden">
+        <div id="questions"></div>
+        <div id="questionNumber"></div>
+        <div id="navigationButtons">
+            <button type="button" id="prevButton">Quay lại</button>
+            <button type="button" id="nextButton">Tiếp theo</button>
+            <button type="button" id="submitButton" class="hidden">Submit</button>
+        </div>
+    </div>
+
+    <div id="resultTable" class="hidden">
+        <img id="resultIcon" src="">
+        <h2 id="resultName"></h2>
+        <p id="resultDescription"></p>
+        <ul id="keyActionsList"></ul>
+        <a id="keyActionsCta" href="#" target="_blank"></a>
+        <button id="shareResultsButton" disabled></i> Chia sẻ kết quả</button>
+    </div>
+
+
+    <div id="shareModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Chia sẻ kết quả</h2>
+            <p>Đây là một số cách bạn có thể chia sẻ với bạn bè và đồng nghiệp của mình:</p>
+            <button id="shareOnFacebook" class="share-option">Chia sẻ qua Facebook</button>
+            <button id="showEmail" class="share-option" onclick="showEmailForm()">Chia sẻ qua Email</button>
+            <button id=""class="share-option" onclick="copyLink()">Sao chép đường dẫn đến trang kết quả</button>
+            <button id="back" class="share-option" onclick="closeShareModal()">Hủy</button>
+        </div>
+    </div>
+
+    <div id="emailFormModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Chia sẻ qua email</h2>
+            <p>Vui lòng cung cấp địa chỉ email mà bạn muốn chia sẻ kết quả:</p>
+            <input type="email" id="emailInput" placeholder="Địa chỉ email nhận kết quả">
+            <div class="email-buttons">
+                <button id="back-ShareModal">Quay lại</button>
+                <button id="sendEmail">Gửi email</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div id="actionButtons" class="action-buttons">
+    <button id="downloadButton" class="action-button"><i class="fas fa-download"></i> Tải về</button>
+    <button id="resetButton" class="action-button"><i class="fas fa-redo"></i> Reset App</button>
+    </div>
+
+
+</body>
+</html>
